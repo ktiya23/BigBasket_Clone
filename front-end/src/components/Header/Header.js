@@ -1,5 +1,17 @@
-// src/components/Header.js
-import { Flex, Box, Image, Input, Button, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Input,
+  Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+} from "@chakra-ui/react";
 import React from "react";
 import LoginModal from "./LoginModal";
 
@@ -16,8 +28,13 @@ function Header() {
       boxShadow="md"
     >
       {/* Logo */}
-      <Box >
-        <Image src="https://static.startuptalky.com/2023/07/bigbasket-logo-StartupTalky.jpg" alt="BigBasket Logo" height="50px" width="150px" />
+      <Box>
+        <Image
+          src="../assets/images/logo.png"
+          alt="BigBasket Logo"
+          height="50px"
+          width="150px"
+        />
       </Box>
 
       {/* Search Box */}
@@ -33,7 +50,7 @@ function Header() {
       </Box>
 
       {/* Location Button */}
-      <Button onClick={onOpen} size="md" mx={2} p="10px" bgColor="gray.200" >
+      <Button onClick={onOpen} size="md" mx={2} p="10px" bgColor="gray.200">
         Select Location
       </Button>
 
@@ -53,7 +70,7 @@ function Header() {
       {/* <Button size="md" p="10px" bgColor="black" color="white">
         Login/Sign Up
       </Button> */}
-      <LoginModal/>
+      <LoginModal />
     </Flex>
   );
 }
