@@ -1,76 +1,31 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Input,
-  Button,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-} from "@chakra-ui/react";
-import React from "react";
-import LoginModal from "./LoginModal";
+import React from 'react';
+import { Button, Image, Flex, Spacer, useDisclosure } from '@chakra-ui/react';
+import CustomModal from './CustomModal'; // Reusable modal component
+import logo from '../../assests/images/logo.png'; // Import the logo directly
 
 function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex
-      as="header"
-      bg="gray.100"
-      p={4}
-      align="center"
-      justify="space-evenly"
-      boxShadow="md"
-    >
-      {/* Logo */}
-      <Box>
-        <Image
-          src="../assets/images/logo.png"
-          alt="BigBasket Logo"
-          height="50px"
-          width="150px"
-        />
-      </Box>
-
-      {/* Search Box */}
-      <Box flex="1" mx={4} maxW="600px">
-        <Input
-          placeholder="Search for products"
-          size="md"
-          w="100%"
-          bg="white"
-          borderRadius="md"
-          p="10px"
-        />
-      </Box>
-
-      {/* Location Button */}
-      <Button onClick={onOpen} size="md" mx={2} p="10px" bgColor="gray.200">
+    <Flex as="header" bg="gray.100" p={4} align="center" justify="space-between" direction={["column", "row"]}>
+      <Image src={logo} alt="BigBasket Logo" height="50px" width="150px" />
+      <Spacer />
+      <Button
+        onClick={onOpen}
+        size="md"
+        mx={2}
+        p="10px"
+        bgColor="gray.200"
+        aria-label="Select Location"
+      >
         Select Location
       </Button>
 
-      {/* Modal for Selecting Location */}
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Choose Address</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {/* Content for choosing address can go here */}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      {/* SignUp/Login Button */}
-      {/* <Button size="md" p="10px" bgColor="black" color="white">
-        Login/Sign Up
-      </Button> */}
-      <LoginModal />
+      {/* Reusable Modal */}
+      <CustomModal isOpen={isOpen} onClose={onClose} title="Choose Address">
+        {/* Address selection content can go here */}
+        <p>Address Selection Form</p>
+      </CustomModal>
     </Flex>
   );
 }

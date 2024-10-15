@@ -1,10 +1,9 @@
 import React from 'react'
+import ShopByCategory from './ShopByCategory'
 
 const NavBar = () => {
   return (
-    <div>
-      
-    </div>
+   <ShopByCategory/>
   )
 }
 
