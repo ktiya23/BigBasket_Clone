@@ -4,17 +4,14 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import { ChakraProvider } from '@chakra-ui/react';
+import ImageSlider from './components/ImageSlider/ImageSlider';
 function App() {
   return (
     <ChakraProvider> 
-      {/* <BrowserRouter> */}
         <Header />
         <NavBar />
-        {/* <Routes>
-          <Route path='/' element={<h1>Home Page</h1>} /> 
-        </Routes> */}
+        <ImageSlider />
         <Footer />
-      {/* </BrowserRouter> */}
     </ChakraProvider>
   );
 }
