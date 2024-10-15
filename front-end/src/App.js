@@ -5,12 +5,14 @@ import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import { ChakraProvider } from '@chakra-ui/react';
 import ImageSlider from './components/ImageSlider/ImageSlider';
+import FooterImgSlider from './components/FooterImgSlider/FooterImgSlider';
 function App() {
   return (
     <ChakraProvider> 
         <Header />
         <NavBar />
         <ImageSlider />
+        <FooterImgSlider />
         <Footer />
     </ChakraProvider>
   );
