@@ -1,6 +1,5 @@
-import { Box, HStack, Image, IconButton } from "@chakra-ui/react";
+import { Box, HStack, Image, IconButton, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const images = [
   "https://www.bigbasket.com/media/uploads/banner_images/hp_m_babycare_250923_400.jpg?tr=w-1920,q=80",
@@ -34,7 +33,6 @@ const FooterImgSlider = () => {
 
   return (
     <Box position="relative" overflow="hidden">
-      {/* Image slider */}
       <Box
         display="flex"
         width={`${images.length * 100}%`}
@@ -52,35 +50,37 @@ const FooterImgSlider = () => {
         ))}
       </Box>
 
-      {/* Navigation Arrows */}
-      {/* <IconButton
+      <IconButton
         aria-label="Previous"
-        icon={<ChevronLeftIcon />}
+        icon={<Text fontSize="2xl">{"<"}</Text>}
         onClick={handlePrev}
         position="absolute"
         left="10px"
         top="50%"
         transform="translateY(-50%)"
         zIndex="1"
+        bg="transparent"
+        _hover={{ bg: "gray.200" }}
       />
       <IconButton
         aria-label="Next"
-        icon={<ChevronRightIcon boxSize={6} />}
+        icon={<Text fontSize="2xl">{">"}</Text>}
         onClick={handleNext}
         position="absolute"
         right="10px"
         top="50%"
         transform="translateY(-50%)"
         zIndex="1"
-      /> */}
+        bg="transparent"
+        _hover={{ bg: "gray.200" }}
+      />
 
-      {/* Pagination Dots */}
       <HStack justify="center" mt={4}>
         {images.map((_, index) => (
           <Box
             key={index}
-            width="10px"
-            height="10px"
+            width="12px"
+            height="12px"
             borderRadius="full"
             bg={currIndex === index ? "green.500" : "gray.300"}
             cursor="pointer"
