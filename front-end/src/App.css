@@ -9,3 +9,9 @@
 body{
   font-family: "Lato" , sans-serif;
 }
+
+.info {
+  line-height: 18px;
+  font-size: 14px;
+  color: #606060;
+}
