@@ -1,31 +1,31 @@
-import React from 'react';
-import { Button, Image, Flex, Spacer, useDisclosure } from '@chakra-ui/react';
-import CustomModal from './CustomModal'; // Reusable modal component
-import logo from '../../assests/images/logo.png'; // Import the logo directly
-
+import React from "react";
+import { Flex, Box } from "@chakra-ui/react";
+import Logo from "./Logo";
+import LocationSelector from "./LocationSelector";
+import LoginSignup from "./LoginSignup"
 function Header() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
-    <Flex as="header" bg="gray.100" p={4} align="center" justify="space-between" direction={["column", "row"]}>
-      <Image src={logo} alt="BigBasket Logo" height="50px" width="150px" />
-      <Spacer />
-      <Button
-        onClick={onOpen}
-        size="md"
-        mx={2}
-        p="10px"
-        bgColor="gray.200"
-        aria-label="Select Location"
-      >
-        Select Location
-      </Button>
+    <Flex
+      as="header"
+      bg="gray.100"
+      p={4}
+      align="center"
+      justify="space-between"
+      width="100%"
+      boxShadow="md"
+    >
+      {/* Logo Section */}
+      <Box>
+        <Logo />
+      </Box>
 
-      {/* Reusable Modal */}
-      <CustomModal isOpen={isOpen} onClose={onClose} title="Choose Address">
-        {/* Address selection content can go here */}
-        <p>Address Selection Form</p>
-      </CustomModal>
+      {/* Location Selector */}
+      <Box>
+        <LocationSelector />
+      </Box>
+      <Box>
+        <LoginSignup />
+      </Box>
     </Flex>
   );
 }

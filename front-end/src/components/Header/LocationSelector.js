@@ -1,65 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
+  Box,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
+  Text,
+  CloseButton,
+  Flex,
   Input,
-  useDisclosure,
-  Stack,
-  FormLabel,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const LocationSelector = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [address, setAddress] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    console.log('Address selected:', address);
-    onClose();
-  };
+  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
   return (
-    <>
-      <Button onClick={onOpen} colorScheme="teal">
+    <Flex direction="column" align="start">
+      {/* Button to Open the Popup */}
+      <Button colorScheme="gray" onClick={togglePopup}>
         Select Location
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Choose Address</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Stack spacing={4}>
-              <FormLabel>Enter your address:</FormLabel>
-              <Input
-                value={address}
-                onChange={handleAddressChange}
-                placeholder="123 Main St, City, State"
-              />
-            </Stack>
-          </ModalBody>
+      {/* Popup Screen */}
+      {isPopupOpen && (
+        <Box
+          position="fixed"
+          top="20%"
+          left="70%"
+          transform="translate(-50%, -50%)"
+          bg="white"
+          p={6}
+          borderRadius="md"
+          boxShadow="lg"
+          zIndex="10"
+          width={["90%", "400px"]}
+        >
+          {/* Close Button */}
+          <CloseButton
+            position="absolute"
+            top="10px"
+            right="10px"
+            onClick={togglePopup}
+          />
 
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={handleSubmit}>
-              Submit
-            </Button>
-            <Button variant="ghost" onClick={onClose}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+          {/* Popup Content */}
+          <Text fontSize="lg" fontWeight="bold" mb={2}>
+            Select a location for delivery
+          </Text>
+          <Text fontSize="sm" color="gray.600">
+            Choose your address location to see product availability and delivery
+            options.
+          </Text>
+          <Input placeholder="Search for area"></Input>
+        </Box>
+      )}
+
+      {/* Overlay Background */}
+      {isPopupOpen && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="blackAlpha.300"
+          zIndex="5"
+          onClick={togglePopup} // Close popup when clicking outside
+        />
+      )}
+    </Flex>
   );
 };
 
