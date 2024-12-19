@@ -1,57 +1,112 @@
-import React from 'react'
+import React, { useState } from "react";
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    Input,
-    Text,
-    Box,
-  } from "@chakra-ui/react";
+  Box,
+  Button,
+  Text,
+  CloseButton,
+  Input,
+  Flex,
+  VStack,
+  Link,
+  Checkbox,
+} from "@chakra-ui/react";
 
-const LoginSignup = ({ isOpen, onClose }) => {
+const LoginSignup = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader textAlign="center">Login/Sign up</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Box textAlign="center" mb={4}>
-            <Text fontWeight="bold">Using OTP</Text>
-          </Box>
-          <Input placeholder="Enter Phone number/Email ID" mb={4} />
-          <Button colorScheme="green" w="100%">
-            Continue
-          </Button>
-          <Text fontSize="xs" color="gray.600" mt={4}>
-            By continuing, I accept BigBasket’s{" "}
-            <Text as="span" color="blue.500">
-              Terms and Conditions
-            </Text>{" "}
-            &{" "}
-            <Text as="span" color="blue.500">
-              Privacy Policy
-            </Text>
-          </Text>
-          <Text fontSize="xs" color="gray.500" mt={2}>
-            This site is protected by reCAPTCHA and the Google{" "}
-            <Text as="span" color="blue.500">
-              Privacy Policy
-            </Text>{" "}
-            and{" "}
-            <Text as="span" color="blue.500">
-              Terms of Service
-            </Text>{" "}
-            apply.
-          </Text>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  )
-}
+    <Flex direction="column" align="start">
+      {/* Button to Open the Popup */}
+      <Button colorScheme="gray" onClick={togglePopup}>
+        Login / Signup
+      </Button>
 
-export default LoginSignup
+      {/* Popup Screen */}
+      {isPopupOpen && (
+        <Box
+          position="fixed"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          bg="white"
+          p={6}
+          borderRadius="md"
+          boxShadow="lg"
+          zIndex="10"
+          width={["90%", "400px"]}
+        >
+          {/* Close Button */}
+          <CloseButton
+            position="absolute"
+            top="10px"
+            right="10px"
+            onClick={togglePopup}
+          />
+
+          {/* Popup Content */}
+          <VStack spacing={4} align="stretch">
+            <Text fontSize="lg" fontWeight="bold" mb={2}>
+              Login / Sign up
+            </Text>
+            <Text fontSize="sm" color="gray.600">
+              Using OTP
+            </Text>
+
+            {/* Input Fields */}
+            <Input
+              placeholder="Enter Phone number / Email Id"
+              type="text"
+              focusBorderColor="green.400"
+            />
+            <Button colorScheme="green" width="full">
+              Continue
+            </Button>
+
+            {/* Terms and Conditions */}
+            <Text fontSize="xs" color="gray.500" textAlign="center">
+              By continuing, I accept TCP - bigbasket’s{" "}
+              <Link color="green.400" href="#">
+                Terms and Conditions
+              </Link>{" "}
+              &{" "}
+              <Link color="green.400" href="#">
+                Privacy Policy
+              </Link>
+            </Text>
+
+            {/* reCAPTCHA Notice */}
+            <Text fontSize="xs" color="gray.500" textAlign="center">
+              This site is protected by reCAPTCHA and the Google -{" "}
+              <Link color="green.400" href="#">
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link color="green.400" href="#">
+                Terms of Service
+              </Link>{" "}
+              apply.
+            </Text>
+          </VStack>
+        </Box>
+      )}
+
+      {/* Overlay Background */}
+      {isPopupOpen && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="blackAlpha.300"
+          zIndex="5"
+          onClick={togglePopup} // Close popup when clicking outside
+        />
+      )}
+    </Flex>
+  );
+};
+
+export default LoginSignup;
