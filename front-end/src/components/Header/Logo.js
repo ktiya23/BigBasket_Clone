@@ -5,10 +5,8 @@ import logo from "../../assests/images/logo.png";
 const Logo = () => {
   return (
     <Flex align="center" gap={4}>
-      {/* BigBasket Logo */}
       <Image src={logo} alt="BigBasket Logo" height="50px" width="150px" />
 
-      {/* Search Bar */}
       <Box flex="1">
         <Input
           placeholder="Search for Products..."
