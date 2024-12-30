@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Button, Text } from "@chakra-ui/react";
 
 const products = [
   {
@@ -60,55 +60,42 @@ const products = [
   },
 ];
 
-const productPerPage = 4;
-
 const SmartBasket = () => {
-  const [current, setCurrent] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const productsPerPage = 4;
 
   const currentProducts = products.slice(
-    current * productPerPage,
-    (current + 1) * productPerPage
+    currentPage * productsPerPage,
+    (currentPage + 1) * productsPerPage
   );
 
-  const Next = () => {
-    if ((current + 1) * productPerPage < products.length) {
-      setCurrent((prev) => prev + 1);
+  const handleNextPage = () => {
+    if ((currentPage + 1) * productsPerPage < products.length) {
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
-  const Previous = () => {
-    if (current > 0) {
-      setCurrent((prev) => prev - 1);
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
   return (
     <Box bg="gray.100" p={4}>
-      <Flex justifyContent="space-around" align="flex-start" mb={4}>
-        <Text fontSize="large" fontWeight="bold">
+      <Flex justify="space-between" align="center" mb={4}>
+        <Text fontSize="xl" fontWeight="bold">
           My Smart Basket
         </Text>
-        <Flex justify="center" mt={4} gap={4} align="flex-end">
-          <Button
-            onClick={Previous}
-            disabled={current === 0}
-            colorScheme="blue"
-          >
-            &lt;
-          </Button>
-          <Button
-            onClick={Next}
-            disabled={(current + 1) * productPerPage >= products.length}
-            colorScheme="blue"
-          >
-            &gt;
-          </Button>
-        </Flex>
+        <Text color="blue.500" cursor="pointer">
+          View All
+        </Text>
       </Flex>
+
       <Flex wrap="wrap" gap={4} justify="center">
-        {currentProducts.map((product, i) => (
+        {currentProducts.map((product, index) => (
           <Box
-            key={i}
+            key={index}
             bg="white"
             boxShadow="md"
             borderRadius="md"
@@ -122,33 +109,49 @@ const SmartBasket = () => {
                 position="absolute"
                 top="5px"
                 left="5px"
-                bg="green.200"
+                bg="red.500"
                 color="white"
-                px="2"
+                px={2}
                 fontSize="sm"
                 borderRadius="sm"
               >
                 {product.offer}
               </Text>
             </Box>
-            <Text fontWeight="light" color="gray" mt="2" textAlign="left">
-              fresho!
+            <Text fontWeight="bold" mt={2}>
+              Fresho!
             </Text>
-            <Text textAlign="left">{product.name}</Text>
-            <Text textAlign="left" fontWeight="bold" mt="2">
+            <Text>{product.name}</Text>
+            <Text fontWeight="bold" mt={2}>
               {product.price}
             </Text>
             <Flex justify="space-between" mt={4}>
-              <Button
-                bg="white"
-                border="1px solid red"
-                _hover={{ background: "red", color: "white" }}
-              >
+              <Button size="sm" colorScheme="teal" variant="outline">
+                Save for Later
+              </Button>
+              <Button size="sm" colorScheme="teal">
                 Add
               </Button>
             </Flex>
           </Box>
         ))}
+      </Flex>
+
+      <Flex justify="center" mt={4} gap={4}>
+        <Button
+          onClick={handlePrevPage}
+          disabled={currentPage === 0}
+          colorScheme="blue"
+        >
+          &lt;
+        </Button>
+        <Button
+          onClick={handleNextPage}
+          disabled={(currentPage + 1) * productsPerPage >= products.length}
+          colorScheme="blue"
+        >
+          &gt;
+        </Button>
       </Flex>
     </Box>
   );
