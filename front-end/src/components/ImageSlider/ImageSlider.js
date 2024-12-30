@@ -51,14 +51,14 @@ const ImageSlider = () => {
             key={index}
             flex="0 0 100%"
             height="300px" 
-            bg="gray.100"
+            // bg="gray.100"
           >
             <Image
               src={image}
               alt={`Slide ${index + 1}`}
               width="100%"
               height="100%"
-              objectFit="cover"
+              // objectFit="cover"
               borderRadius="md"
             />
           </Box>

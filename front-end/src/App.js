@@ -6,12 +6,13 @@ import ImageSlider from './components/ImageSlider/ImageSlider';
 import FooterImgSlider from './components/FooterImgSlider/FooterImgSlider';
 import Paragraph from './components/Paragraph/Paragraph';
 import TopOffers from './components/TopOffers/TopOffers';
+import SmartBasket from './components/MySmartBasket/SmartBasket';
 function App() {
   return (
     <>
-        <Header />
-        <NavBar />
-        <ImageSlider />
+        <Header /><br/>
+        <ImageSlider /> <br/>
+        <SmartBasket/>
         <TopOffers />
         <FooterImgSlider />
         <Paragraph />

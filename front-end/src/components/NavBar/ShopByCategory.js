@@ -40,7 +40,7 @@ const ShopByCategory = () => {
   };
 
   return (
-    <HStack spacing="20px">
+    <HStack spacing="20px" justify="space-evenly" width="100%" position="sticky">
       <Menu>
         <MenuButton
           as={Button}

@@ -13,6 +13,7 @@ const Logo = () => {
           bg="white"
           borderColor="gray.300"
           borderRadius="md"
+          width="350px"
         />
       </Box>
     </Flex>

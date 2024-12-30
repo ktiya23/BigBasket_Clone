@@ -139,18 +139,16 @@ const LocationSelector = () => {
 
       {isPopupOpen && (
         <Box
-          position="fixed"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="blackAlpha.300"
-          zIndex="5"
-          onClick={(e) => {
-            e.stopPropagation();
-            togglePopup();
-          }}
-        />
+        position="fixed"
+        top="0"
+        left="0"
+        width="100vw"
+        height="100vh"
+        bg="blackAlpha.300"
+        zIndex="5"
+        onClick={togglePopup} 
+      />
+      
       )}
     </Flex>
   );
