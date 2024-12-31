@@ -27,20 +27,12 @@ const TopOffers = () => {
 
   return (
     <Box p={8} textAlign="center">
-      {/* Heading */}
       <Heading as="h2" size="lg" mb={6}>
         Top Offers
       </Heading>
 
-      {/* Cards Grid */}
       <Grid templateColumns="repeat(4, 1fr)" gap={6} mb={4}>
         {offers.map((offer) => (
-          //   <Box
-          //     key={offer.id}
-          //     borderWidth="1px"
-          //     borderRadius="lg"
-
-          //   >
           <Image
             src={offer.image}
             alt={`Offer ${offer.id}`}
@@ -51,7 +43,6 @@ const TopOffers = () => {
               transition: "0.3s",
             }}
           />
-          //   </Box>
         ))}
       </Grid>
     </Box>

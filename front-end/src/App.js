@@ -7,6 +7,8 @@ import Paragraph from './components/Paragraph/Paragraph';
 import TopOffers from './components/TopOffers/TopOffers';
 import SmartBasket from './components/MySmartBasket/SmartBasket';
 import BestSeller from './components/BestSeller/BestSeller';
+import FruitNVeg from './components/Fruits_Veg/FruitNVeg';
+import DailyStaples from './components/DailyStaples/DailyStaples';
 function App() {
   return (
     <>
@@ -14,7 +16,9 @@ function App() {
         <ImageSlider /> <br/>
         <SmartBasket/> <br/>
         <BestSeller/>
-        <TopOffers />
+        <TopOffers /><br/>
+        <FruitNVeg /><br/>
+        {/* <DailyStaples/> */}
         <FooterImgSlider />
         <Paragraph />
         <Footer />
