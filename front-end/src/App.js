@@ -1,18 +1,19 @@
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import NavBar from './components/NavBar/NavBar';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import FooterImgSlider from './components/FooterImgSlider/FooterImgSlider';
 import Paragraph from './components/Paragraph/Paragraph';
 import TopOffers from './components/TopOffers/TopOffers';
 import SmartBasket from './components/MySmartBasket/SmartBasket';
+import BestSeller from './components/BestSeller/BestSeller';
 function App() {
   return (
     <>
         <Header /><br/>
         <ImageSlider /> <br/>
-        <SmartBasket/>
+        <SmartBasket/> <br/>
+        <BestSeller/>
         <TopOffers />
         <FooterImgSlider />
         <Paragraph />

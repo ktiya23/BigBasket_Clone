@@ -13,7 +13,7 @@ const products = [
     image:
       "https://www.bigbasket.com/media/uploads/p/m/10000333_15-fresho-chilli-green-long-medium.jpg?tr=w-154,q-80",
     offer: "20% OFF",
-    name: "Chilli - Green Long, Medium (Loose)",
+    name: "Chilli - Green Long",
     price: "₹99.73",
   },
   {
@@ -83,70 +83,42 @@ const SmartBasket = () => {
   };
 
   return (
-    <Box bg="gray.100" p={4}>
-      <Flex justifyContent="space-around" align="flex-start" mb={4}>
-        <Text fontSize="large" fontWeight="bold">
+    <Box bg="gray.100" p={2}>
+      <Flex justifyContent="space-between" mb={4} alignItems="center">
+        <Text fontSize="larger" fontWeight="bold" paddingTop={6}>
           My Smart Basket
         </Text>
-        <Flex justify="center" mt={4} gap={4} align="flex-end">
-          <Button
-            onClick={Previous}
-            disabled={current === 0}
-            colorScheme="blue"
-          >
+        <Flex mt={4} gap={4}>
+          <Button  onClick={Previous}  disabled={current === 0}  bg="white" color="black" _hover={{border:"1px solid black"}}  >
             &lt;
           </Button>
-          <Button
-            onClick={Next}
-            disabled={(current + 1) * productPerPage >= products.length}
-            colorScheme="blue"
-          >
+          <Button  onClick={Next}  disabled={(current + 1) * productPerPage >= products.length}  bg="white" color="black"   _hover={{border:"1px solid black"}}>
             &gt;
           </Button>
         </Flex>
       </Flex>
-      <Flex wrap="wrap" gap={4} justify="center">
+      <Flex wrap="wrap" justify="space-evenly">
         {currentProducts.map((product, i) => (
-          <Box
-            key={i}
-            bg="white"
-            boxShadow="md"
-            borderRadius="md"
-            p={4}
-            textAlign="center"
-            width="200px"
-          >
+          <Box  key={i}  bg="white"  boxShadow="md"  borderRadius="md"  p={1}  textAlign="left"  width="250px"  minHeight="300px"  display="flex"  flexDirection="column" justifyContent="space-around">
             <Box position="relative">
-              <Image src={product.image} alt={product.name} borderRadius="md" />
-              <Text
-                position="absolute"
-                top="5px"
-                left="5px"
-                bg="green.200"
-                color="white"
-                px="2"
-                fontSize="sm"
-                borderRadius="sm"
-              >
+              <Image src={product.image} alt={product.name} borderRadius="md" mt={6}/>
+              <Text  position="absolute"  top="5px"  left="5px"  bg="green.200"  color="white"  px="2"  fontSize="sm"  borderRadius="sm" mt={6}>
                 {product.offer}
               </Text>
+            </Box><br/>
+            <Box mt={4} textAlign="left">
+              <Text fontWeight="light" color="gray">
+                fresho!
+              </Text>
+              <Text>{product.name}</Text>
+              <br/>
+              <Text fontWeight="bold" mt="2">
+                {product.price}
+              </Text><br/>
             </Box>
-            <Text fontWeight="light" color="gray" mt="2" textAlign="left">
-              fresho!
-            </Text>
-            <Text textAlign="left">{product.name}</Text>
-            <Text textAlign="left" fontWeight="bold" mt="2">
-              {product.price}
-            </Text>
-            <Flex justify="space-between" mt={4}>
-              <Button
-                bg="white"
-                border="1px solid red"
-                _hover={{ background: "red", color: "white" }}
-              >
-                Add
-              </Button>
-            </Flex>
+            <Button bg="white" border="1px solid red" _hover={{ background: "red", color: "white" }} mt={2} mb={6} margin={2}>
+              Add
+            </Button>
           </Box>
         ))}
       </Flex>
